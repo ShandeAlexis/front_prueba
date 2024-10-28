@@ -1,0 +1,46 @@
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Lista de Clientes</h2>
+    
+    <!-- Tabla de clientes -->
+    <table class="table table-hover table-striped table-bordered shadow-sm">
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Email</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customer of customers" class="align-middle">
+          <td>{{ customer.id }}</td>
+          <td>{{ customer.name }}</td>
+          <td>{{ customer.email }}</td>
+          <td>
+            <button (click)="editCustomer(customer)" class="btn btn-sm btn-warning me-1">Editar</button>
+            <button (click)="deleteCustomer(customer.id!)" class="btn btn-sm btn-danger">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Formulario para agregar o editar clientes -->
+    <div class="mt-4 p-4 border rounded shadow-sm bg-light">
+      <h4 class="mb-3">{{ editingCustomer ? 'Editar Cliente' : 'Agregar Nuevo Cliente' }}</h4>
+      <form (ngSubmit)="editingCustomer ? updateCustomer() : addCustomer()">
+        <div class="mb-3">
+          <label for="name" class="form-label">Nombre</label>
+          <input type="text" [(ngModel)]="newCustomer.name" name="name" class="form-control" placeholder="Ingrese el nombre" required />
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" [(ngModel)]="newCustomer.email" name="email" class="form-control" placeholder="Ingrese el email" required />
+        </div>
+        <div class="d-flex justify-content-between">
+          <button type="submit" class="btn btn-primary">{{ editingCustomer ? 'Actualizar Cliente' : 'Agregar Cliente' }}</button>
+          <button type="button" class="btn btn-secondary" (click)="cancelEdit()" *ngIf="editingCustomer">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

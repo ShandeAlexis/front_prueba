@@ -1,0 +1,43 @@
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Lista de Productos</h2>
+    
+    <table class="table table-hover table-striped table-bordered shadow-sm">
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products" class="align-middle">
+          <td>{{ product.id }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.price | currency }}</td>
+          <td>
+            <button (click)="editProduct(product)" class="btn btn-sm btn-warning me-1">Editar</button>
+            <button (click)="deleteProduct(product.id!)" class="btn btn-sm btn-danger">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div class="mt-4 p-4 border rounded shadow-sm bg-light">
+      <h4 class="mb-3">{{ editingProduct ? 'Editar Producto' : 'Agregar Nuevo Producto' }}</h4>
+      <form (ngSubmit)="editingProduct ? updateProduct() : addProduct()">
+        <div class="mb-3">
+          <label for="name" class="form-label">Nombre</label>
+          <input type="text" [(ngModel)]="newProduct.name" name="name" class="form-control" placeholder="Ingrese el nombre del producto" required />
+        </div>
+        <div class="mb-3">
+          <label for="price" class="form-label">Precio</label>
+          <input type="number" [(ngModel)]="newProduct.price" name="price" class="form-control" placeholder="Ingrese el precio del producto" required />
+        </div>
+        <div class="d-flex justify-content-between">
+          <button type="submit" class="btn btn-primary">{{ editingProduct ? 'Actualizar Producto' : 'Agregar Producto' }}</button>
+          <button type="button" class="btn btn-secondary" (click)="cancelEdit()" *ngIf="editingProduct">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>

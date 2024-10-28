@@ -1,0 +1,24 @@
+.table th, .table td {
+    vertical-align: middle; /* Centra verticalmente el contenido de las celdas */
+  }
+
+  .table-hover tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.1); /* Color de fondo suave al pasar el mouse */
+  }
+
+  .btn {
+    transition: background-color 0.2s, transform 0.2s; /* Animación suave para los botones */
+  }
+
+  .btn:hover {
+    background-color: rgba(0, 123, 255, 0.8); /* Efecto hover en botones */
+    transform: scale(1.05); /* Efecto de escala al pasar el mouse */
+  }
+
+  .bg-light {
+    background-color: #f8f9fa !important; /* Color de fondo para el formulario */
+  }
+
+  .shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; /* Sombra suave */
+  }

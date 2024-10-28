@@ -1,0 +1,16 @@
+body {
+    background-color: #f8f9fa; /* Color de fondo suave */
+}
+
+h1 {
+    font-weight: bold; /* Negrita para el código de error */
+}
+
+.btn-primary {
+    transition: background-color 0.3s, transform 0.3s; /* Animación suave para el botón */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Color de fondo más oscuro al pasar el mouse */
+    transform: scale(1.05); /* Efecto de escala al pasar el mouse */
+}
